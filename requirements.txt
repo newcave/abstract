@@ -1,0 +1,7 @@
+requests
+json
+BeautifulSoup
+torch
+transformers 
+Translator
+tkinter
