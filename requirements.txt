@@ -3,7 +3,7 @@ requests
 beautifulsoup4
 torch
 transformers 
-translator
+#translator
 #tkinter
 googletrans
 
