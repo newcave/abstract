@@ -5,7 +5,7 @@ torch
 #transformers==4.11.2
 #translator
 #tkinter
-googletrans==4.0.0-rc1
+#googletrans==4.0.0-rc1
 googletrans
 #T5Tokenizer
-T5Tokenizer
+#T5Tokenizer
