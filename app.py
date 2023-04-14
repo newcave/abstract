@@ -18,15 +18,29 @@ headers = {
     "X-ELS-APIKey": api_key
 }
 
+
+
+
 # Load T5 model and tokenizer
 tokenizer = T5Tokenizer.from_pretrained('t5-base')
 model = T5ForConditionalGeneration.from_pretrained('t5-base')
 
+
 def extract_abstract(url):
-    webpage = requests.get(url)
-    soup = BeautifulSoup(webpage.text, "html.parser")
-    abstract = soup.find(class_='html-p').text
-    return abstract
+    try:
+        webpage = requests.get(url)
+        soup = BeautifulSoup(webpage.text, "html.parser")
+        abstract = soup.find(class_='html-p').text
+        return abstract
+    except requests.exceptions.RequestException:
+        st.error("Invalid URL. Please refresh the app and try again.")
+        return None
+
+# def extract_abstract(url):
+#     webpage = requests.get(url)
+#     soup = BeautifulSoup(webpage.text, "html.parser")
+#     abstract = soup.find(class_='html-p').text
+#     return abstract
 
 def summarize_abstract(abstract):
     # Encode the input text
