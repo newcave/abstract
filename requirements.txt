@@ -6,5 +6,5 @@ transformers==4.11.2
 #translator
 #tkinter
 googletrans==4.0.0-rc1
-
+T5Tokenizer
  
