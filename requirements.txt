@@ -4,5 +4,5 @@ BeautifulSoup
 torch
 transformers 
 Translator
-tkinter
+#tkinter
 
