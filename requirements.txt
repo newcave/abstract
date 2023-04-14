@@ -1,8 +1,9 @@
 requests
 #json
-BeautifulSoup
+BeautifulSoup4
 torch
 transformers 
 Translator
 #tkinter
+
 
