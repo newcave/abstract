@@ -64,7 +64,7 @@ def translate_summary(summary):
     translated = translator.translate(summary, dest='ko')
     return translated.text
 
-st.title("MDPI Paper Summarizer")
+st.title("MDPI Paper Summarizer made by Dr. KWJOO, decorated by newcave")
 
 url = st.text_input("Enter MDPI URL")
 
