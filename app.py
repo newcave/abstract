@@ -18,31 +18,21 @@ headers = {
     "X-ELS-APIKey": api_key
 }
 
-
-
-
 # Load T5 model and tokenizer
 tokenizer = T5Tokenizer.from_pretrained('t5-base')
 model = T5ForConditionalGeneration.from_pretrained('t5-base')
 
+def extract_abstract(url):
+    try:
+        webpage = requests.get(url)
+        soup = BeautifulSoup(webpage.text, "html.parser")
+        abstract = soup.find(class_='html-p').text
+        return abstract
+    except requests.exceptions.RequestException:
+        st.error("Invalid URL. Please refresh the app and try again.")
+        return None
 
-# def extract_abstract(url):
-#     try:
-#         webpage = requests.get(url)
-#         soup = BeautifulSoup(webpage.text, "html.parser")
-#         abstract = soup.find(class_='html-p').text
-#         return abstract
-#     except requests.exceptions.RequestException:
-#         st.error("Invalid URL. Please refresh the app and try again.")
-#         return None
-
-# def extract_abstract(url):
-#     webpage = requests.get(url)
-#     soup = BeautifulSoup(webpage.text, "html.parser")
-#     abstract = soup.find(class_='html-p').text
-#     return abstract
-
-def summarize_abstract(abstract):
+def summarize_abstract(abstract, min_length, max_length, length_penalty, num_beams, early_stopping):
     # Encode the input text
     input_ids = tokenizer.encode(abstract, return_tensors='pt', max_length=512)
 
@@ -53,6 +43,7 @@ def summarize_abstract(abstract):
                                  length_penalty=length_penalty,
                                  num_beams=num_beams,
                                  early_stopping=early_stopping)
+
     # Decode the summary
     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
     
@@ -73,7 +64,6 @@ length_penalty = st.sidebar.slider("Length Penalty", 1.0, 3.0, 2.0, step=0.1)
 num_beams = st.sidebar.slider("Number of Beams", 2, 8, 4, step=1)
 early_stopping = st.sidebar.checkbox("Early Stopping", value=True)
 
-
 url = st.text_input("Enter MDPI URL")
 
 if url:
@@ -81,7 +71,7 @@ if url:
     st.subheader("Abstract")
     st.write(abstract)
     
-    summary = summarize_abstract(abstract)
+    summary = summarize_abstract(abstract, min_length, max_length, length_penalty, num_beams, early_stopping)
     st.subheader("Summary")
     st.write(summary)
     
