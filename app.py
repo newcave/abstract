@@ -48,12 +48,11 @@ def summarize_abstract(abstract):
 
     # Generate the summary
     summary_ids = model.generate(input_ids,
-                                 min_length=100,
-                                 max_length=300,
-                                 length_penalty=2.0,
-                                 num_beams=4,
-                                 early_stopping=True)
-
+                                 min_length=min_length,
+                                 max_length=max_length,
+                                 length_penalty=length_penalty,
+                                 num_beams=num_beams,
+                                 early_stopping=early_stopping)
     # Decode the summary
     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
     
@@ -67,6 +66,12 @@ def translate_summary(summary):
 
 st.sidebar.image("AlLAB-LOGO-WhiteBG.png")
 st.title("MDPI Paper Summarizer made by Dr. KWJOO, decorated by newcave")
+
+min_length = st.sidebar.slider("Minimum Summary Length", 50, 200, 100, step=10)
+max_length = st.sidebar.slider("Maximum Summary Length", 200, 400, 300, step=10)
+length_penalty = st.sidebar.slider("Length Penalty", 1.0, 3.0, 2.0, step=0.1)
+num_beams = st.sidebar.slider("Number of Beams", 2, 8, 4, step=1)
+early_stopping = st.sidebar.checkbox("Early Stopping", value=True)
 
 
 url = st.text_input("Enter MDPI URL")
