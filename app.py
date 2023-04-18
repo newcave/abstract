@@ -66,6 +66,9 @@ def translate_summary(summary):
 
 st.title("MDPI Paper Summarizer made by Dr. KWJOO, decorated by newcave")
 
+   st.sidebar.image("AlLAB-LOGO-WhiteBG.png")
+
+
 url = st.text_input("Enter MDPI URL")
 
 if url:
