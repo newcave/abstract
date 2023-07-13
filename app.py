@@ -67,36 +67,36 @@ early_stopping = st.sidebar.checkbox("Early Stopping", value=True)
 url = st.text_input("Enter MDPI URL")
 
 
-#''' if st.button("Summarize"):
-#    if url:
-#        abstract = extract_abstract(url)
-#        st.subheader("Abstract")
-#        st.write(abstract)
-#
-#        summary = summarize_abstract(abstract, min_length, max_length, length_penalty, num_beams, early_stopping)
-#        st.subheader("Summary")
-#        st.write(summary)
-#
-#        translated = translate_summary(summary)
-#        st.subheader("Translated Summary")
-#        st.write(translated) '''
+''' if st.button("Summarize"):
+    if url:
+        abstract = extract_abstract(url)
+        st.subheader("Abstract")
+        st.write(abstract)
 
-if url:
-    abstract = extract_abstract(url)
-    st.subheader("Abstract")
-    st.write(abstract)
-
-    if st.button("Summarize"):
-        min_length = st.sidebar.slider("Minimum Summary Length", 50, 200, 100, step=10)
-        max_length = st.sidebar.slider("Maximum Summary Length", 200, 400, 300, step=10)
-        length_penalty = st.sidebar.slider("Length Penalty", 1.0, 3.0, 2.0, step=0.1)
-        num_beams = st.sidebar.slider("Number of Beams", 2, 8, 4, step=1)
-        early_stopping = st.sidebar.checkbox("Early Stopping", value=True)
-        
         summary = summarize_abstract(abstract, min_length, max_length, length_penalty, num_beams, early_stopping)
         st.subheader("Summary")
         st.write(summary)
 
         translated = translate_summary(summary)
         st.subheader("Translated Summary")
-        st.write(translated)
+        st.write(translated) '''
+
+#if url:
+#    abstract = extract_abstract(url)
+#    st.subheader("Abstract")
+#    st.write(abstract)
+#
+#    if st.button("Summarize"):
+#        min_length = st.sidebar.slider("Minimum Summary Length", 50, 200, 100, step=10)
+#        max_length = st.sidebar.slider("Maximum Summary Length", 200, 400, 300, step=10)
+#        length_penalty = st.sidebar.slider("Length Penalty", 1.0, 3.0, 2.0, step=0.1)
+#        num_beams = st.sidebar.slider("Number of Beams", 2, 8, 4, step=1)
+#        early_stopping = st.sidebar.checkbox("Early Stopping", value=True)
+#        
+#        summary = summarize_abstract(abstract, min_length, max_length, length_penalty, num_beams, early_stopping)
+#        st.subheader("Summary")
+#        st.write(summary)
+#
+#        translated = translate_summary(summary)
+#        st.subheader("Translated Summary")
+#        st.write(translated)
