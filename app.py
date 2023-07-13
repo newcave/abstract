@@ -56,7 +56,7 @@ def translate_summary(summary):
 
 
 st.sidebar.image("AlLAB-LOGO-WhiteBG.png")
-st.title("MDPI Paper Summarizer made by Dr. KWJOO, decorated by newcave")
+st.title("MDPI Paper Summarizer")
 
 min_length = st.sidebar.slider("Minimum Summary Length", 50, 200, 100, step=10)
 max_length = st.sidebar.slider("Maximum Summary Length", 200, 400, 300, step=10)
