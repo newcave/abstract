@@ -58,8 +58,8 @@ def translate_summary(summary):
 st.sidebar.image("AlLAB-LOGO-WhiteBG.png")
 st.title("MDPI Paper Summarizer")
 
-min_length = st.sidebar.slider("Minimum Summary Length", 50, 200, 100, step=10)
-max_length = st.sidebar.slider("Maximum Summary Length", 200, 400, 300, step=10)
+min_length = st.sidebar.slider("Minimum Summary Length", 50, 400, 200, step=50)
+max_length = st.sidebar.slider("Maximum Summary Length", 200, 600, 400, step=50)
 length_penalty = st.sidebar.slider("Length Penalty", 1.0, 3.0, 2.0, step=0.1)
 num_beams = st.sidebar.slider("Number of Beams", 2, 8, 4, step=1)
 early_stopping = st.sidebar.checkbox("Early Stopping", value=True)
