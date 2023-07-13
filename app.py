@@ -67,7 +67,7 @@ early_stopping = st.sidebar.checkbox("Early Stopping", value=True)
 url = st.text_input("Enter MDPI URL")
 
 
-''' if st.button("Summarize"):
+if st.button("Summarize"):
     if url:
         abstract = extract_abstract(url)
         st.subheader("Abstract")
@@ -79,7 +79,7 @@ url = st.text_input("Enter MDPI URL")
 
         translated = translate_summary(summary)
         st.subheader("Translated Summary")
-        st.write(translated) '''
+        st.write(translated) 
 
 #if url:
 #    abstract = extract_abstract(url)
